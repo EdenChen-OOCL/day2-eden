@@ -4,8 +4,7 @@ public class MarsRover {
     private int yLocation = 0;
     private String direction = Direction.N.getDirection();
 
-
-
+    private static final int STEP_LENGTH = 1;
 
     public int getXLocation() {
         return xLocation;
@@ -37,38 +36,50 @@ public class MarsRover {
 
     private String calculatePositionAndDerection(String command) {
         if(command.equals(Command.L.getCommand())){
-            if(direction.equals(Direction.N.getDirection())){
-                setDirection(Direction.W.getDirection());
-            } else if(direction.equals(Direction.W.getDirection())){
-                setDirection(Direction.S.getDirection());
-            } else if(direction.equals(Direction.S.getDirection())){
-                setDirection(Direction.E.getDirection());
-            } else if(direction.equals(Direction.E.getDirection())){
-                setDirection(Direction.N.getDirection());
-            }
+            turnLeft();
         } else if(command.equals(Command.R.getCommand())){
-            if(direction.equals(Direction.N.getDirection())){
-                setDirection(Direction.E.getDirection());
-            } else if(direction.equals(Direction.E.getDirection())){
-                setDirection(Direction.S.getDirection());
-            } else if(direction.equals(Direction.S.getDirection())){
-                setDirection(Direction.W.getDirection());
-            } else if(direction.equals(Direction.W.getDirection())){
-                setDirection(Direction.N.getDirection());
-            }
+            turnRight();
         } else if(command.equals(Command.M.getCommand())){
-            if(direction.equals(Direction.N.getDirection())){
-                setYLocation(getYLocation() + 1);
-            } else if(direction.equals(Direction.S.getDirection())){
-                setYLocation(getYLocation() - 1);
-            } else if (direction.equals(Direction.E.getDirection())){
-                setXLocation(getXLocation() + 1);
-            } else if (direction.equals(Direction.W.getDirection())){
-                setXLocation(getXLocation() - 1);
-            }
+            moveForward();
         }
 
         return formatReport();
+    }
+
+    private void moveForward() {
+        if(direction.equals(Direction.N.getDirection())){
+            setYLocation(getYLocation() + STEP_LENGTH);
+        } else if(direction.equals(Direction.S.getDirection())){
+            setYLocation(getYLocation() - STEP_LENGTH);
+        } else if (direction.equals(Direction.E.getDirection())){
+            setXLocation(getXLocation() + STEP_LENGTH);
+        } else if (direction.equals(Direction.W.getDirection())){
+            setXLocation(getXLocation() - STEP_LENGTH);
+        }
+    }
+
+    private void turnRight() {
+        if(direction.equals(Direction.N.getDirection())){
+            setDirection(Direction.E.getDirection());
+        } else if(direction.equals(Direction.E.getDirection())){
+            setDirection(Direction.S.getDirection());
+        } else if(direction.equals(Direction.S.getDirection())){
+            setDirection(Direction.W.getDirection());
+        } else if(direction.equals(Direction.W.getDirection())){
+            setDirection(Direction.N.getDirection());
+        }
+    }
+
+    private void turnLeft() {
+        if(direction.equals(Direction.N.getDirection())){
+            setDirection(Direction.W.getDirection());
+        } else if(direction.equals(Direction.W.getDirection())){
+            setDirection(Direction.S.getDirection());
+        } else if(direction.equals(Direction.S.getDirection())){
+            setDirection(Direction.E.getDirection());
+        } else if(direction.equals(Direction.E.getDirection())){
+            setDirection(Direction.N.getDirection());
+        }
     }
 
     private String formatReport() {
