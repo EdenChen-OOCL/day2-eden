@@ -32,6 +32,15 @@ public class MarsRover {
     }
 
     public String executeCommand(String command) {
-        return "0:0:N";
+        if(command.equals("L")){
+            if(direction.equals("N")){
+                direction = "W";
+            }
+        } else if(command.equals("R")){
+            if(direction.equals("N")){
+                direction = "E";
+            }
+        }
+        return xLocation + ":" + yLocation + ":" + direction;
     }
 }

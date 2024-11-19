@@ -15,6 +15,13 @@ public class MarsRoverTest {
     public void should_turn_west_when_excuteCommand_given_current_direction_is_north_and_command_is_L() {
         MarsRover marsRover = new MarsRover();
         String report = marsRover.executeCommand("L");
-        assertEquals("0:0:N", report);
+        assertEquals("0:0:W", report);
+    }
+
+    @Test
+    public void should_turn_east_when_excuteCommand_given_current_direction_is_north_and_command_is_R() {
+        MarsRover marsRover = new MarsRover();
+        String report = marsRover.executeCommand("R");
+        assertEquals("0:0:E", report);
     }
 }
