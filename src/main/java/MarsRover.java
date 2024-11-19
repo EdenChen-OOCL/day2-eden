@@ -30,4 +30,8 @@ public class MarsRover {
     public void setDirection(String direction) {
         this.direction = direction;
     }
+
+    public String executeCommand(String command) {
+        return "0:0:N";
+    }
 }
