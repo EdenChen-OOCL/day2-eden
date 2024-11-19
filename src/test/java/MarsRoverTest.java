@@ -24,4 +24,11 @@ public class MarsRoverTest {
         String report = marsRover.executeCommand(Command.R.getCommand());
         assertEquals("0:0:E", report);
     }
+
+    @Test
+    public void should_turn_north_when_excuteCommand_given_current_direction_is_north_and_command_is_M() {
+        MarsRover marsRover = new MarsRover();
+        String report = marsRover.executeCommand(Command.M.getCommand());
+        assertEquals("0:1:N", report);
+    }
 }

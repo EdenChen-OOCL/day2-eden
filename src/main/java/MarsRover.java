@@ -7,19 +7,19 @@ public class MarsRover {
 
 
 
-    public int getxLocation() {
+    public int getXLocation() {
         return xLocation;
     }
 
-    public void setxLocation(int xLocation) {
+    public void setXLocation(int xLocation) {
         this.xLocation = xLocation;
     }
 
-    public int getyLocation() {
+    public int getYLocation() {
         return yLocation;
     }
 
-    public void setyLocation(int yLocation) {
+    public void setYLocation(int yLocation) {
         this.yLocation = yLocation;
     }
 
@@ -43,6 +43,10 @@ public class MarsRover {
         } else if(command.equals(Command.R.getCommand())){
             if(direction.equals(Direction.N.getDirection())){
                 setDirection(Direction.E.getDirection());
+            }
+        } else if(command.equals(Command.M.getCommand())){
+            if(direction.equals(Direction.N.getDirection())){
+                setYLocation(getYLocation() + 1);
             }
         }
 
