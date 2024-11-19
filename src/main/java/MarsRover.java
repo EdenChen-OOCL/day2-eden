@@ -2,7 +2,7 @@ public class MarsRover {
 
     private int xLocation = 0;
     private int yLocation = 0;
-    private String direction = "N";
+    private String direction = Direction.N.getDirection();
 
 
 
@@ -32,15 +32,24 @@ public class MarsRover {
     }
 
     public String executeCommand(String command) {
-        if(command.equals("L")){
-            if(direction.equals("N")){
-                direction = "W";
+        return calculatePositionAndDerection(command);
+    }
+
+    private String calculatePositionAndDerection(String command) {
+        if(command.equals(Command.L.getCommand())){
+            if(direction.equals(Direction.N.getDirection())){
+                setDirection(Direction.W.getDirection());
             }
-        } else if(command.equals("R")){
-            if(direction.equals("N")){
-                direction = "E";
+        } else if(command.equals(Command.R.getCommand())){
+            if(direction.equals(Direction.N.getDirection())){
+                setDirection(Direction.E.getDirection());
             }
         }
+
+        return formatReport();
+    }
+
+    private String formatReport() {
         return xLocation + ":" + yLocation + ":" + direction;
     }
 }
