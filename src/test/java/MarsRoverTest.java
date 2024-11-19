@@ -31,4 +31,28 @@ public class MarsRoverTest {
         String report = marsRover.executeCommand(Command.M.getCommand());
         assertEquals("0:1:N", report);
     }
+
+    @Test
+    public void should_turn_south_when_excuteCommand_given_current_direction_is_south_and_command_is_M() {
+        MarsRover marsRover = new MarsRover();
+        marsRover.setDirection(Direction.S.getDirection());
+        String report = marsRover.executeCommand(Command.M.getCommand());
+        assertEquals("0:-1:S", report);
+    }
+
+    @Test
+    public void should_turn_east_when_excuteCommand_given_current_direction_is_east_and_command_is_M() {
+        MarsRover marsRover = new MarsRover();
+        marsRover.setDirection(Direction.E.getDirection());
+        String report = marsRover.executeCommand(Command.M.getCommand());
+        assertEquals("1:0:E", report);
+    }
+
+    @Test
+    public void should_turn_west_when_excuteCommand_given_current_direction_is_west_and_command_is_M() {
+        MarsRover marsRover = new MarsRover();
+        marsRover.setDirection(Direction.W.getDirection());
+        String report = marsRover.executeCommand(Command.M.getCommand());
+        assertEquals("-1:0:W", report);
+    }
 }
