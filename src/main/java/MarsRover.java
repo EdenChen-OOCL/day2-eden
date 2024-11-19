@@ -39,6 +39,12 @@ public class MarsRover {
         if(command.equals(Command.L.getCommand())){
             if(direction.equals(Direction.N.getDirection())){
                 setDirection(Direction.W.getDirection());
+            } else if(direction.equals(Direction.W.getDirection())){
+                setDirection(Direction.S.getDirection());
+            } else if(direction.equals(Direction.S.getDirection())){
+                setDirection(Direction.E.getDirection());
+            } else if(direction.equals(Direction.E.getDirection())){
+                setDirection(Direction.N.getDirection());
             }
         } else if(command.equals(Command.R.getCommand())){
             if(direction.equals(Direction.N.getDirection())){
